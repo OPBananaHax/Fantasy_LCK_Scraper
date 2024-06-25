@@ -1,7 +1,7 @@
 """
 * Name: Emerson Goss
 * Date: 2/20/24
-* Independent Project: Fantasy LOL
+* Fantasy LCK
 * Description: This program will retrieve data from gol.gg to populate a table
                of player stats. It scrapes team rosters and match stats from
                gol.gg league tabs and stores them in a dataframe with the
