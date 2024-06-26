@@ -339,7 +339,7 @@ def generate_template_week_stats_df(rankings_url):
     return  df  
 
 # Completed
-def get_template(first_time):
+def get_template(first_time, folder_path):
     if first_time:
         # call function to create weekly df of players rostered so far
         # df has format:
@@ -350,7 +350,7 @@ def get_template(first_time):
         df.to_csv(folder_path + '\Template Week Stats.csv', index=False)
     else:
         # can also read in the saved template dataframe
-        df = pd.read_csv(r'C:\Users\thewa\.vscode\Python Projects\Template Week Stats.csv')
+        df = pd.read_csv(folder_path + '\Template Week Stats.csv')
         df.index = df['Player']
     return df
 
@@ -369,7 +369,7 @@ first_time = False
 week_num = 1
 
 
-df = get_template(first_time)
+df = get_template(first_time, folder_path)
 df, final_match = get_week_matches(matchlist_url, week_num, df)
 if final_match != 'Completed':
     final_match = 'until ' + final_match
