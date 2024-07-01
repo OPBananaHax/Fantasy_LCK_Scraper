@@ -71,7 +71,7 @@ def main():
     else:
         week = (max(df.iloc[0, 1] - 1, 0), df.iloc[0, 2])
         df, r = get_week_matches(week, df)
-        if r[1] != 0:
+        if r != 0:
             # Week is incomplete, update and save
             df.iloc[0, 1] = int(r[0])
             df.iloc[0, 2] = int(r[1])
@@ -115,6 +115,8 @@ def get_week_matches(week, df, strict=False):
 
         # columns are as follows:
         #   Match link - team1 - score - team2 - week - patch - date
+        if first_match + i >= len(match_rows):
+            return df, [week[0], 0]
         row = match_rows[first_match + i]
         print(f"Scraping {row.find('td').get_text()} ", end='')
         cols = row.find_all('td')
