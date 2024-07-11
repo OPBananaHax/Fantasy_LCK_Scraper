@@ -67,7 +67,8 @@ players_dict = {
 translate = {
     "kingen": "Kingen",
     "ShowMaker": "Showmaker",
-    "Bulldog": "BuLLDoG"
+    "Bulldog": "BuLLDoG",
+    "Gumayusi": "Gumayushi"
 }
 
 def get_id(name):
