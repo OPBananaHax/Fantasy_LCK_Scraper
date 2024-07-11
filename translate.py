@@ -8,6 +8,8 @@ folder_path = r'/Users/justynshelby/Documents/Programming/LCKScraper/rawstats.cs
 update_loc = True
 # Dictionary of week match pairs, or false. Default false
 force_matches = False
+# Create undo queries to rollback a change. Default is false
+undo = False
 
 def main():
 
@@ -34,11 +36,11 @@ def main():
                 stats[id]["deaths"] += data["deaths"]
                 stats[id]["assists"] += data["assists"]
                 stats[id]["cs"] += data["cs"]
-                points = round(data["kills"] * 2 + data["assists"] * 1.5 + data["cs"] * 0.01 - data["deaths"] * 0.5)
+                points = round(data["kills"] * 2 + data["assists"] * 1.5 + data["cs"] * 0.01 - data["deaths"] * 0.5, 2)
                 stats[id]["points"] += points
                 stats[id]["gamesPlayed"] += 1
             else:
-                points = round(data["kills"] * 2 + data["assists"] * 1.5 + data["cs"] * 0.01 - data["deaths"] * 0.5)
+                points = round(data["kills"] * 2 + data["assists"] * 1.5 + data["cs"] * 0.01 - data["deaths"] * 0.5, 2)
                 stats[id] = {"kills": data["kills"],
                                "deaths": data["deaths"],
                                "assists": data["assists"],
@@ -53,7 +55,8 @@ def main():
             match = 0
 
     for id, stat in stats.items():
-        print(f"UPDATE Stats SET kills = kills + {stat['kills']}, deaths = deaths + {stat['deaths']}, assists = assists + {stat['assists']}, cs = cs + {stat['cs']}, points = ROUND(points + {stat['points']}, 2), gamesPlayed = gamesPlayed + {stat['gamesPlayed']} WHERE playerID = {id} AND week = {stat['week']};")
+        sign = "+" if not undo else "-"
+        print(f"UPDATE Stats SET kills = kills {sign} {stat['kills']}, deaths = deaths {sign} {stat['deaths']}, assists = assists {sign} {stat['assists']}, cs = cs {sign} {stat['cs']}, points = ROUND(points {sign} {stat['points']}, 2), gamesPlayed = gamesPlayed {sign} {stat['gamesPlayed']} WHERE playerID = {id} AND week = {stat['week']};")
 
     if force_matches == False and update_loc:
         df.iloc[0, 3] = week + 1 
