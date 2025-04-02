@@ -61,14 +61,20 @@ players_dict = {
     "Callme": {"id": 59, "role": "Mid"},
     "DDoiV": {"id": 60, "role": "Jng"},
     "Pullbae": {"id": 61, "role": "Mid"},
-    "Duro": {"id": 62}
+    "Duro": {"id": 62},
+    "Calix": {"id": 63},
+    "FATE": {"id": 64},
+    "Quantum": {"id": 65},
+    "Vital": {"id": 66},
+    "Paduck": {"id": 67}
 }
 
 translate = {
     "kingen": "Kingen",
     "ShowMaker": "Showmaker",
     "Bulldog": "BuLLDoG",
-    "Gumayusi": "Gumayushi"
+    "Gumayusi": "Gumayushi",
+    "Kyeahoo": "kyeahoo"
 }
 
 def get_id(name):

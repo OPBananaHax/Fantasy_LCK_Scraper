@@ -22,7 +22,7 @@ import ssl
 #   rankings url is used to access team rosters for storing stats in a dataframe
 matchlist_url = 'https://gol.gg/tournament/tournament-matchlist/LCK%20Summer%202024/'
 rankings_url = 'https://gol.gg/tournament/tournament-ranking/LCK%20Summer%202024/'
-folder_path = r'/Users/justynshelby/Documents/Programming/LCKScraper/rawstats.csv'
+folder_path = r'../rawstats.csv'
 
 # force creation of a new file. False is default
 # This will break the format if ran with force_weeks

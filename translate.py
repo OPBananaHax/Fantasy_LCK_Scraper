@@ -20,7 +20,8 @@ def main():
         print("rawstats.csv not found. Please run scraper first. Exiting ")
         return 1
 
-    week, match = max(df.iloc[0, 3] - 1, 0), df.iloc[0, 4]
+    #week, match = max(df.iloc[0, 3] - 1, 0), df.iloc[0, 4]
+    week, match = 7, 0
     index = 200 * week + 20 * match
  
     stats = {}
@@ -40,14 +41,16 @@ def main():
                 stats[id]["points"] += points
                 stats[id]["gamesPlayed"] += 1
             else:
-                points = round(data["kills"] * 2 + data["assists"] * 1.5 + data["cs"] * 0.01 - data["deaths"] * 0.5, 2)
-                stats[id] = {"kills": data["kills"],
+                if week + 1 == 8:
+                    points = round(data["kills"] * 2 + data["assists"] * 1.5 + data["cs"] * 0.01 - data["deaths"] * 0.5, 2)
+                    stats[id] = {"kills": data["kills"],
                                "deaths": data["deaths"],
                                "assists": data["assists"],
                                "cs": data["cs"],
                                "points": points,
                                "gamesPlayed": 1,
                                "week": week + 1}
+                    print(f"checking location {index + i}, {stats[id]}")
         index += 20
         match += 1 
         if match >= 10:
