@@ -2,7 +2,7 @@ import pandas as pd
 from Fantasy_LOL_Center import df_to_int
 from players import get_id
 
-folder_path = r'/Users/justynshelby/Documents/Programming/LCKScraper/rawstats.csv'
+folder_path = r'../rawstats.csv'
 # Updated last visited location. Deafult True
 # Automatically false if force is true
 update_loc = True
@@ -23,7 +23,7 @@ def main():
     #week, match = max(df.iloc[0, 3] - 1, 0), df.iloc[0, 4]
     week, match = 7, 0
     index = 200 * week + 20 * match
- 
+
     stats = {}
     while len(df) > index + 1:
         for i in range(1, 21):
