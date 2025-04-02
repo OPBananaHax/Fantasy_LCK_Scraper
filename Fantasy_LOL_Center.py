@@ -32,7 +32,7 @@ force_restart = False
 force_weeks = None
 
 def main():
-    
+
     # fix ssl issue
     # something I found online to bypass scraping verification errors
     try:
@@ -108,7 +108,7 @@ def get_week_matches(week, df, strict=False):
     match_rows = rows[1:]
     match_rows.reverse()
     first_match = int(week[0]) * 10
-    
+
     # Set to a finite number to avoid infinite loops in case of failure
     end_count = 10 if strict else 100
     for i in range(week[1], end_count):
@@ -131,7 +131,7 @@ def get_week_matches(week, df, strict=False):
             print("- has yet to occur! Stopping...")
             return df, [int(week[0]) + 1 + i // 10, i % 10]
         df = r[0]
-        
+
     return df, 0
 
 def get_match_stats(week, match_url, match_index, df):
@@ -162,7 +162,7 @@ def get_match_stats(week, match_url, match_index, df):
         assert len(players) == 10
         assert len(kdas) == 10
         assert len(cs) == 10
-        
+
         for i in range(10):
             player = players[i].contents[0]
             kdacs = convert_kda(kdas[i].contents[0], cs[i].contents[0])
