@@ -20,8 +20,8 @@ import ssl
 # these are the urls on gol.gg for the list of matches and the list of teams by ranking in LCK
 #   matchlist url is used to access games played for player stats
 #   rankings url is used to access team rosters for storing stats in a dataframe
-matchlist_url = 'https://gol.gg/tournament/tournament-matchlist/LCK%20Summer%202024/'
-rankings_url = 'https://gol.gg/tournament/tournament-ranking/LCK%20Summer%202024/'
+matchlist_url = 'https://gol.gg/tournament/tournament-matchlist/LCK%202025%20Rounds%201-2/'
+rankings_url = 'https://gol.gg/tournament/tournament-ranking/LCK%202025%20Rounds%201-2/'
 folder_path = r'../rawstats.csv'
 
 # force creation of a new file. False is default
